@@ -1,53 +1,21 @@
-<!-- <div class="w-screen h-screen bg-cover bg-center border-4 border-red-500" style="background-image: url('../assets/Images/flower-3175428_1280.jpg');background-size:cover;
-  background-repeat: no-repeat;">
-<div class="text-center pt-20">
- <div class="nav navbar">
-    <ul>
-      <li>Home</li>
-      <li>About</li>
-      <li>Menu</li>
-      <li>Gallery</li>
-      <li>Contact</li>
-      <button>BOOK A TABLE</button>
-    </ul>
-
-  </div>
-  <div>
-  <h1 class="text-4xl font-bold text-blue-600">Tailwind is working!</h1>
-<p  class="h1">Welcome to Sizzle</p>
-<p>\" Indulge in Culinary Delights:Where Every Bite is a Passport to Flavors of Amore! \"</p>
-<div>
-<button>OUR MENU</button>
-<button>BOOK A TABLE</button>
-</div>
-</div>
-</div>
-  </div>
- 
-
-
- -->
-<div class="w-screen h-screen bg-cover bg-center" style="background-image: url('/assets/Images/cafe-5635015_1920.jpg');">
-  <div class="text-center pt-20 text-white h-full w-full">
-    <nav class="mb-6">
-      <ul class="flex justify-center gap-8 text-lg font-semibold">
-        <li>Home</li>
-        <li>About</li>
-        <li>Menu</li>
-        <li>Gallery</li>
-        <li>Contact</li>
-        <button class="bg-red-600 text-white px-4 py-2 rounded">BOOK A TABLE</button>
-      </ul>
-    </nav>
-
-    <div>
-      <h1 class="text-4xl font-bold text-blue-400">Tailwind is working!</h1>
-      <p class="text-2xl">Welcome to Sizzle</p>
-      <p class="mt-2 text-lg">"Indulge in Culinary Delights: Where Every Bite is a Passport to Flavors of Amore!"</p>
-      <div class="mt-6">
-        <button class="bg-white text-black px-4 py-2 rounded mr-4">OUR MENU</button>
-        <button class="bg-yellow-500 text-black px-4 py-2 rounded">BOOK A TABLE</button>
+<div class="w-screen h-screen bg-cover bg-center" style="background-image: url('/assets/Images/reserved.jpeg');">
+  <div class="pt-20 text-white h-full w-full">
+    <nav class="flex items-center justify-between px-6 py-4 bg-gray-800/50 text-white font-semibold">
+      <div class="w-1/3 flex justify-center items-center">
+<img src="../assets/Images/icons/bibimbap.png" alt="no_image" width="35" height="35" class="border border-none">
       </div>
-    </div>
-  </div>
+      <ul class="flex justify-center gap-6 w-1/3 cursor-pointer">
+        <li routerLink="/" routerLinkActive="text-yellow-400" [routerLinkActiveOptions]="{ exact: true }" class="text-yellow-400">Home</li>
+        <li routerLink="about" routerLinkActive="text-yellow-400" class="hover:text-yellow-400">About</li>
+        <li class="hover:text-yellow-400">Menu</li>
+        <li class="hover:text-yellow-400">Gallery</li>
+        <li class="hover:text-yellow-400">Contact</li>
+        </ul>
+<div class="w-1/3 flex justify-end mr-12">
+<button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">BOOK A TABLE</button>
 </div>
+    </nav>
+    </div>
+    </div>
+    
+<router-outlet></router-outlet>
