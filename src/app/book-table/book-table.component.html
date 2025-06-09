@@ -1,0 +1,73 @@
+<div class="bg-white w-full h-full text-center text-black">
+    <div class="text-center">
+        <p class="text-xs text-black pt-4">RESERVATION</p>
+        <p class="text-2xl text-yellow-400">Book a Table</p>
+    </div>
+    <form [formGroup]="bookTableForm" (ngSubmit)="bookTableFn()">
+        <div class="flex flex-col justify-center items-center mt-4">
+            <div class="flex flex-row gap-4 mb-4 ">
+                <input type="text" id="customerName" formControlName="name" placeholder="Name"
+                    class="border border-gray-sm p-2 focus:outline-none focus:ring-1 focus:ring-gray-400 shadow-sm">
+                <div *ngIf="bookTableForm.get('name')?.touched && bookTableForm.get('name')?.invalid"
+                    class="text-red-500 text-xs flex justify-center items-center">
+                    <div *ngIf="bookTableForm.get('name')?.errors?.['required']">Name is required</div>
+                    <div *ngIf="bookTableForm.get('name')?.errors?.['minlength']">Name must be at least 2 characters
+                    </div>
+                </div>
+                <input type="email" id="customerEmail" formControlName="email" placeholder="Email"
+                    class="border border-gray-sm p-2 focus:outline-none focus:ring-1 focus:ring-gray-400 shadow-sm">
+                <div *ngIf="bookTableForm.get('email')?.touched && bookTableForm.get('email')?.invalid"
+                    class="text-red-500 text-xs flex justify-center items-center">
+                    <div *ngIf="bookTableForm.get('email')?.errors?.['required']">Email is required</div>
+                    <div *ngIf="bookTableForm.get('email')?.errors?.['email']">Invalid email format</div>
+                </div>
+                <input type="number" id="customerPhone" formControlName="phone" placeholder="Phone"
+                    class="border border-gray-sm p-2 focus:outline-none focus:ring-1 focus:ring-gray-400 shadow-sm">
+                <div *ngIf="bookTableForm.get('phone')?.touched && bookTableForm.get('phone')?.invalid"
+                    class="text-red-500 text-xs flex justify-center items-center">
+                    <div *ngIf="bookTableForm.get('phone')?.errors?.['required']">
+                        Phone number is required
+                    </div>
+                    <div *ngIf="bookTableForm.get('phone')?.errors?.['pattern']">Invalid phone number</div>
+                </div>
+
+            </div>
+            <div class="flex flex-row gap-4 mb-4">
+                <input type="date" id="date" formControlName="date" placeholder="mm/dd/yyyy"
+                    class="border border-gray-sm py-2 px-9 mr-0 focus:outline-none focus:ring-1 focus:ring-gray-400 shadow-sm text-gray-400">
+                <div *ngIf="bookTableForm.get('date')?.touched && bookTableForm.get('date')?.invalid"
+                    class="text-red-500 text-xs flex justify-center items-center">
+                    <div *ngIf="bookTableForm.get('date')?.errors?.['required']">date is required</div>
+                    
+                </div>
+                <input type="time" id="time" formControlName="time" placeholder="--:-- --"
+                    class="text-gray-400 border border-gray-sm py-2 px-16 mr-2 focus:outline-none focus:ring-1 focus:ring-gray-400 shadow-sm">
+                <div *ngIf="bookTableForm.get('time')?.touched && bookTableForm.get('time')?.invalid"
+                    class="text-red-500 text-xs flex justify-center items-center">
+                    <div *ngIf="bookTableForm.get('time')?.errors?.['required']">time is required</div>
+                    
+                </div>
+                <input type="number" id="peopleNumber" formControlName="peopleCount" placeholder="No. of people"
+                    class="border border-gray-sm p-2 focus:outline-none focus:ring-1 focus:ring-gray-400 shadow-sm">
+                <div *ngIf="bookTableForm.get('peopleCount')?.touched && bookTableForm.get('peopleCount')?.invalid"
+                    class="text-red-500 text-xs flex justify-center items-center">
+                    <div *ngIf="bookTableForm.get('peopleCount')?.errors?.['required']">count is required</div>
+                    <div *ngIf="bookTableForm.get('peopleCount')?.errors?.['min']">Atleast one person is required</div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-4 mb-4  focus:border-gray-400">
+                <textarea formControlName="inbox" placeholder="Message" rows="10"
+                    class="border border-gray-sm w-[640px] p-4 focus:outline-none focus:ring-1 focus:ring-gray-400 shadow-sm"></textarea>
+                <!-- <div *ngIf="bookTableForm.get('inbox')?.touched && bookTableForm.get('inbox')?.invalid" class="text-red-500 text-xs flex justify-center items-center">
+                       <div *ngIf="bookTableForm.get('inbox')?.errors?.['required']">message is required</div>
+<div></div> 
+                    </div> -->
+            </div>
+            <div class="w-1/3 flex justify-center items-center">
+                <button [disabled]="bookTableForm.invalid" type="submit"
+                    class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 disabled:bg-gray-500 disabled:hover:bg-gray-600">BOOK TABLE</button>
+            </div>
+        </div>
+    </form>
+
+</div>

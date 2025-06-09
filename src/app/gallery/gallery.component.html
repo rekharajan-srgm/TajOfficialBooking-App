@@ -1,0 +1,103 @@
+<div class="bg-white w-full h-full">
+    <div class="flex flex-col pt-8 justify-center items-center">
+        <p class="text-black text-xs">GALLERY</p>
+        <p class="text-yellow-400 text-2xl">Some photos from our Restaurant</p>
+    </div>
+    <div class="m-10 mx-40 flex space-x-4">
+        <button class="hover:bg-yellow-400 hover:rounded-full hover:text-white text-black text-xs px-4 py-2"
+            (click)="showFoodImages()">Food</button>
+        <button (click)="showAmbienceImages()"
+            class="hover:bg-yellow-400 hover:rounded-full hover:text-white text-black text-xs px-4 py-2">Ambience</button>
+    </div>
+
+    //food Images
+    <div *ngIf="food_images==true" class="flex flex-wrap gap-6 justify-start mx-40 my-2">
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-assorted-indian-non-vegetarian-food-recipe.jpg" alt="no_image"
+                width="300" height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-chicken-curry-rice.jpg" alt="no_image" width="300" height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-pasta-spaghetti-bolognese.jpg" alt="no_image" width="300" height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-delicious-cauliflower-cheese-soup.jpg" alt="no_image" width="300"
+                height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-dessert-cheesecake.jpg" alt="no_image" width="300" height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-assorted-indian-non-vegetarian-food-recipe.jpg" alt="no_image"
+                width="300" height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-easter-bunny-cake-tiramisu-dessert.jpg" alt="no_image" width="300"
+                height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-pasta-fettuccine-bolognese-with-tomato.jpg" alt="no_image" width="300"
+                height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-grilled-salmon-and-mango-salad.jpg" alt="no_image" width="300"
+                height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-homemade-apple-pie.jpg" alt="no_image" width="300" height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-rajasthani-gatta-curry-or-besan.jpg" alt="no_image" width="300"
+                height="300">
+        </div>
+        <div class="w-[22%]">
+            <img src="/assets/Images/stock-photo-mexican-chilaquiles-food-with-spicy-red-sauce.jpg" alt="no_image"
+                width="300" height="300">
+        </div>
+    </div>
+   
+    //ambience Images
+     <div *ngIf="ambience_images==true" class="flex flex-wrap gap-6 justify-start mx-40 my-2">
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/stock-photo-circa-minnesota-childrens-birthday-party.jpg" alt="no_image" class="w-full h-full object-cover rounded" >
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/istockphoto.jpg" alt="no_image" class="w-full h-full object-cover rounded" >
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/stock-photo-motion-chefs.jpg" alt="no_image" class="w-full h-full object-cover rounded" >
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/seaview.jpg" alt="no_image" class="w-full h-full object-cover rounded">
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/stock-photo-background-image.jpg" alt="no_image" class="w-full h-full object-cover rounded">
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/stock-photo-florence.jpg" alt="no_image"
+               class="w-full h-full object-cover rounded">
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/stock-photo-focused-female-chef-garnishing-salad.jpg" alt="no_image"class="w-full h-full object-cover rounded">
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/stock-photo-four-cheerful.jpg" alt="no_image" class="w-full h-full object-cover rounded">
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/stock-photo-happy-female-chef-with-hand-on-shoulder.jpg" alt="no_image" class="w-full h-full object-cover rounded">
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/stock-photo-image-of-happy-woman-using-laptop.jpg" alt="no_image" class="w-full h-full object-cover rounded">
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/stock-photo-italian-ice-cream.jpg" alt="no_image" class="w-full h-full object-cover rounded">
+        </div>
+        <div class="w-[22%] h-[230px]">
+            <img src="/assets/Images/stock-photo-table-of-food-center.jpg" alt="no_image"
+                class="w-full h-full object-cover rounded object-">
+        </div>
+    </div>
+
+</div>
