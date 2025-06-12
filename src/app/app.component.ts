@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { RouterModule } from '@angular/router';
-import { AuthService } from './auth.service';
+import { RouterOutlet,Router,RouterModule } from '@angular/router';
+import { AuthService } from './services/authentication/auth.service';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-root',
   standalone:true,
@@ -13,12 +13,12 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   
   title = 'TajOfficialBooking-App';
-  adminLogout = false;
-  constructor(private authService: AuthService) {}
-  ngOnInit(){
-    this.adminLogout=this.authService.loggedIn;
-  }
+  
+  constructor(public authService: AuthService,private router:Router) {}
+  
   logout(){
     this.authService.logout();
+    console.log("loggggg out clicked!");
+    this.router.navigate(['/adminLogin']); 
   }
 }

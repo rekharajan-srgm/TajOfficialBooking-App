@@ -1,0 +1,8 @@
+.table-container {
+  margin: 2rem auto; /* this centers it horizontally */
+  max-width: 800px;
+  padding: 1rem;
+  background-color: #f5f7f1;
+  border-radius: 5px;
+}
+

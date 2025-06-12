@@ -4,5 +4,37 @@
         <p class="text-2xl text-yellow-400">List of Customers Registered for Dine-In</p>
     </div>
     <div class="border-b border-gray-200 w-3/4 mx-auto mt-4"></div>
-    
+    <h2 class="mt-8 text-orange-600">Customer Booking Details</h2>
+    <div class="table-container shadow-md">
+        
+        <table class="table-auto w-full text-left border-collapse">
+            <thead class="p-1">
+                <tr class="p-1">
+                    <th>S.No.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>No. of People</th>
+                </tr>
+                <tr class="border-b border-orange-300"></tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customers;let i=index" class="p-1 border-b border-orange-200">
+                    <td>{{i+1}}</td>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.email}}</td>
+                    <td>{{customer.date}}</td>
+                    <td>{{customer.time}}</td>
+                    <td>{{customer.peopleCount}}</td>
+                    <td>
+                        <button>
+                            <img src="/assets/Images/icons/delete_trash_icon.png" alt="no_i" class="w-[15px] h-[20px]" (click)="delCustomer(customer.email)">
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
 </div>

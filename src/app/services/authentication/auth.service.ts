@@ -4,12 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn:boolean=false;
+  loggedOut:boolean=false;
   constructor() { }
 login(){
-this.loggedIn=true;
+this.loggedOut=true;
 }
 logout(){
-this.loggedIn=false;
+this.loggedOut=false;
 }
 }
