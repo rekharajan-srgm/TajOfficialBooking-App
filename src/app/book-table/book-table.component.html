@@ -75,7 +75,7 @@
             </div>
         </div>
     </form>
-    <app-edit-dialog-box *ngIf="showDialog" [bookingDetails]="bookTableForm.value" (onClose)="handleDialogClose($event)">
+    <app-edit-dialog-box *ngIf="showDialog" [bookingDetails]="bookingData" (onClose)="handleDialogClose($event)">
         
     </app-edit-dialog-box>
 

@@ -1,35 +1,67 @@
-<div class="mx-auto fixed bg-opacity-50 flex justify-center items-center z-50">
-    <div>
-        <h2 class="text-orange-600 mt-2">
-            Confirm Booking
+<div class="inset-0 fixed bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
+    <div class="bg-blue-100 p-6 rounded-lg shadow-md w-[90%] max-w-md text-black">
+        <h2 class="text-red-600 mt-2 text-center font-bold">
+            {{ isEditing ? 'Edit Booking' : 'Confirm Booking'}}
         </h2>
-        <p><strong>Name:</strong> {{bookingDetails.name}}</p>
-        <p><strong>Email:</strong> {{bookingDetails.email}}</p>
-        <p><strong>phone:</strong> {{bookingDetails.phone}}</p>
-        <p><strong>Date:</strong> {{bookingDetails.date}}</p>
-        <p><strong>Time:</strong> {{bookingDetails.time}}</p>
-        <p><strong>People Count:</strong> {{bookingDetails.peopleCount}}</p>
-        <p><strong>Inbox:</strong> {{bookingDetails.inbox}}</p>
-    </div>
-    <div class="mt-6 flex justify-end gap-4">
-<button class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400" (click)="cancel()">Cancel</button>
-<button class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700" (click)="confirm()">OK</button>
-    </div>
+        <div class="flex flex-col text-start mb-2">
+            <div class="mb-2">
+                <strong>Name:</strong>
+                <span *ngIf="!isEditing">
+                    {{editableBooking.name}}
+                </span>
+                <input *ngIf="isEditing" [(ngModel)]="editableBooking.name" class="border p-1 w-full">
+            </div>
+            <div class="mb-2">
+                <strong>Email:</strong>
+                <span *ngIf="!isEditing">
+                    {{editableBooking.email}}
+                </span>
+                <input *ngIf="isEditing" [(ngModel)]="editableBooking.email" class="border p-1 w-full">
+            </div>
+            <div class="mb-2">
+                <strong>phone:</strong>
+                <span *ngIf="!isEditing">
+                    {{editableBooking.phone}}
+                </span>
+                <input *ngIf="isEditing" [(ngModel)]="editableBooking.phone" class="border p-1 w-full">
+            </div>
+            <div class="mb-2">
+                <strong>date:</strong>
+                <span *ngIf="!isEditing">
+                    {{editableBooking.date}}
+                </span>
+                <input *ngIf="isEditing" [(ngModel)]="editableBooking.date" class="border p-1 w-full">
+            </div>
+            <div class="mb-2">
+                <strong>time:</strong>
+                <span *ngIf="!isEditing">
+                    {{editableBooking.time}}
+                </span>
+                <input *ngIf="isEditing" [(ngModel)]="editableBooking.time" class="border p-1 w-full">
+            </div>
+            <div class="mb-2">
+                <strong>peopleCount:</strong>
+                <span *ngIf="!isEditing">
+                    {{editableBooking.peopleCount}}
+                </span>
+                <input *ngIf="isEditing" [(ngModel)]="editableBooking.peopleCount" class="border p-1 w-full">
+            </div>
+            <div class="mb-2">
+                <strong>inbox:</strong>
+                <span *ngIf="!isEditing">
+                    {{editableBooking.inbox}}
+                </span>
+                <input *ngIf="isEditing" [(ngModel)]="editableBooking.inbox" class="border p-1 w-full">
+            </div>
 
+        </div>
+        <div class="mt-2 flex justify-end gap-4">
+            <button *ngIf="!isEditing" (click)="editBookedTable()">
+                <img src="/assets/Images/icons/delete_trash_icon (2).png" alt="edit" class="w-[25px] h-[30px]">
+            </button>
+            <button *ngIf="isEditing" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700" (click)="saveEditedDetails()">Save</button>
+            <button class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400" (click)="cancel()">Cancel</button>
+            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" (click)="confirm()">OK</button>
+        </div>
+    </div>
 </div>
-
-<!-- <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-  <div class="bg-white p-6 rounded-lg shadow-md w-[90%] max-w-md text-black">
-    <h2 class="text-xl font-semibold mb-4">Confirm Booking</h2>
-    <p><strong>Name:</strong> {{bookingDetails.name}}</p>
-    <p><strong>Email:</strong> {{bookingDetails.email}}</p>
-    <p><strong>Date:</strong> {{bookingDetails.date}}</p>
-    <p><strong>Time:</strong> {{bookingDetails.time}}</p>
-    <p><strong>People Count:</strong> {{bookingDetails.peopleCount}}</p>
-
-    <div class="mt-6 flex justify-end gap-4">
-      <button class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400" (click)="cancel()">Cancel</button>
-      <button class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700" (click)="confirm()">OK</button>
-    </div>
-  </div>
-</div> -->

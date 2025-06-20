@@ -4,9 +4,9 @@
         <p class="text-2xl text-yellow-400">List of Customers Registered for Dine-In</p>
     </div>
     <div class="border-b border-gray-200 w-3/4 mx-auto mt-4"></div>
-    <h2 class="mt-8 text-orange-600">Customer Booking Details</h2>
+    <h1 class="mt-8 text-orange-600 font-semibold">Customer Booking Details</h1>
     <div class="table-container shadow-md">
-        
+
         <table class="table-auto w-full text-left border-collapse">
             <thead class="p-1">
                 <tr class="p-1">
@@ -26,10 +26,13 @@
                     <td>{{customer.email}}</td>
                     <td>{{customer.date}}</td>
                     <td>{{customer.time}}</td>
+                    <td>{{customer.phone}}</td>
+                    <td>{{customer.inbox}}</td>
                     <td>{{customer.peopleCount}}</td>
                     <td>
                         <button>
-                            <img src="/assets/Images/icons/delete_trash_icon.png" alt="no_i" class="w-[15px] h-[20px]" (click)="delCustomer(customer.email)">
+                            <img src="/assets/Images/icons/delete_trash_icon.png" alt="no_i" class="w-[15px] h-[20px]"
+                                (click)="delCustomer(customer.email)">
                         </button>
                     </td>
                 </tr>
