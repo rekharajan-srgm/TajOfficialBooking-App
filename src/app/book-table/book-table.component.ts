@@ -32,14 +32,12 @@ export class BookTableComponent {
   bookTableFn() {
     console.log("************clicked");
     const apiUrl = "http://localhost:3000/api/bookings";
-    const token=localStorage.getItem('token');
+    
     if (this.bookTableForm.valid) {
       console.log(this.bookTableForm.value);
       const formData = this.bookTableForm.value;
-      const headers=new HttpHeaders({
-        Authorization: `Bearer ${token}`
-      });
-      this.http.post(apiUrl, formData,{headers}).subscribe({
+      
+      this.http.post(apiUrl, formData).subscribe({
         next: (response) => {
           console.log("API response*********", response);
           this.bookingData = formData;

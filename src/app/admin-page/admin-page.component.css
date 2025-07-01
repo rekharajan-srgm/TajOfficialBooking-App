@@ -6,3 +6,7 @@
   border-radius: 5px;
 }
 
+.searchFilter{
+  outline: none;
+  border-radius: 0.25rem;
+}

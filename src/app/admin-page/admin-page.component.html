@@ -4,23 +4,40 @@
         <p class="text-2xl text-yellow-400">List of Customers Registered for Dine-In</p>
     </div>
     <div class="border-b border-gray-200 w-3/4 mx-auto mt-4"></div>
-    <h1 class="mt-8 text-orange-600 font-semibold">Customer Booking Details</h1>
-    <div class="table-container shadow-md">
 
-        <table class="table-auto w-full text-left border-collapse">
+    <div class="table-container shadow-md">
+        <h1 class="mt-1 text-orange-600 font-semibold">Customer Booking Details</h1>
+        <div class="flex flex-row justify-center items-center mt-3 w-full gap-2">
+            <div>
+                <select type="search" placeholder="do filters here" class="p-1 w-36 rounded-md" (change)="handleSelection($event)">
+                    <option value="">Order by</option>
+                    <option value="count">Order by count</option>
+                    <option value="date">Order by date</option>
+                    <option value="alphabet">Order by A-Z</option>
+                </select>
+            </div>
+            <div>
+                <input type="text" placeholder="Do filters here by e-mail id" class="p-1 w-72 searchFilter">
+            </div>
+
+        </div>
+
+        <table class="table-auto w-full text-left border-collapse mt-4">
             <thead class="p-1">
                 <tr class="p-1">
-                    <th>S.No.</th>
+                    <th class="w-">S.No.</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Date</th>
                     <th>Time</th>
+                    <th>Phone No.</th>
+                    <th>Suggestions/Request</th>
                     <th>No. of People</th>
                 </tr>
                 <tr class="border-b border-orange-300"></tr>
             </thead>
             <tbody>
-                <tr *ngFor="let customer of customers;let i=index" class="p-1 border-b border-orange-200">
+                <!-- <tr *ngFor="let customer of customers;let i=index" class="p-1 border-b border-orange-200">
                     <td>{{i+1}}</td>
                     <td>{{customer.name}}</td>
                     <td>{{customer.email}}</td>
@@ -35,8 +52,38 @@
                                 (click)="delCustomer(customer.email)">
                         </button>
                     </td>
+                </tr> -->
+                <tr *ngFor="let customer of customersPerPage;let i=index" class="p-1 border-b border-orange-200">
+                    <td class="w-8 sm:w-8 md:w-12">{{ (currentPage-1) * pageSize + i + 1 }}</td>
+                    <td class="w-24 sm:w-32 md:w-48">{{customer.name}}</td>
+                    <td class="w-40 sm:w-40 md:w-48">{{customer.email}}</td>
+                    <td class="w-24 sm:w-32">{{customer.date}}</td>
+                    <td class="w-32 sm:w-40">{{customer.time}}</td>
+                    <td class="w-32 sm:w-40">{{customer.phone}}</td>
+                    <td class="w-52 sm:w-64 md:w-[400px]">{{customer.inbox}}</td>
+                    <td class="w-20 sm:w-24">{{customer.peopleCount}}</td>
+                    <td>
+                        <button>
+                            <img src="/assets/Images/icons/delete_trash_icon.png" alt="no_i" class="w-[15px] h-[20px]"
+                                (click)="delCustomer(customer.email)">
+                        </button>
+                    </td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="9" class="px-4 py-1 w-24 pt-2">
+                        <div class="flex justify-end items-center gap-3">
+                            <button class="hover:underline" (click)="firstPage()">&laquo;</button>
+                            <button class="hover:underline" (click)="prevPage()"><</button>
+                                    <span class="font-semibold text-xs whitespace-nowrap">Page {{currentPage}} of
+                                        {{totalPages}} </span>
+                                    <button class="hover:underline" (click)="nextPage()">&gt;</button>
+                                    <button class="hover:underline" (click)="lastPage()">&raquo;</button>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
 
     </div>
