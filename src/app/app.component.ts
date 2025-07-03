@@ -11,13 +11,15 @@ import { Observable } from 'rxjs';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  hideButtons$: Observable<boolean>;
+  hideButtons$!: Observable<boolean>;
   title = 'TajOfficialBooking-App';
   constructor(public authService: AuthService, private router: Router) {
-    this.hideButtons$ = this.authService.hideButtons$;
+    
   }
+
   ngOnInit() {
-    // const token=localStorage.getItem('token');
+    this.hideButtons$ = this.authService.hideButtons$;
+    console.log("hideButton Valueeeeeeeee:",this.hideButtons$);
   }
 
   logout() {

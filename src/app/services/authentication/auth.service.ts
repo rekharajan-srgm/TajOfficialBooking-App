@@ -3,12 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginResponse } from './loginResInterface';
 import { BehaviorSubject } from 'rxjs';
+import { TokenExpiryService } from '../token-expiry/token-expiry.service';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   loggedOut: boolean = false;
-  // hideButtons:boolean=false;
+
   private hideButtonsSubject = new BehaviorSubject<boolean>(false); //creating object for behavioursubject
   hideButtons$ = this.hideButtonsSubject.asObservable();
   setHideButtons(value: boolean) {
@@ -17,14 +20,40 @@ export class AuthService {
   get hideButtonsValue(): boolean {
     return this.hideButtonsSubject.value;
   }
-  constructor(private http: HttpClient, private router: Router) { 
 
+  constructor(private http: HttpClient, private router: Router,private tokenExpiryService: TokenExpiryService) {
+    const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+    if (token) {
+      if (this.tokenExpiryService.isTokenExpired(token)) {
+        // token is expired
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.setHideButtons(false);
+        this.router.navigate(["/adminLogin"]);
+      } else {
+        // token is still valid
+        const expiryTime = this.tokenExpiryService.getTokenExpiration(token)! - Date.now();
+        // if(this.loggedOut==true){
+        //    this.setHideButtons(true);
+        // }
+        console.log("ExpiryTime for current valid token:::",expiryTime);
+        console.log("loggedOut is:",this.loggedOut);
+        setTimeout(() => {
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+          this.setHideButtons(false);
+         this.router.navigate(["/adminLogin"]);
+        }, expiryTime); // Auto logout after remaining time
+      }
+    }
+    else{
+      this.setHideButtons(false); //no tokens, show buttons
+    }
   }
 
   login(username: string, password: string) {
+    
     this.loggedOut = true;
-
-
     const apiURL = "http://localhost:3000/api/auth/login";
     this.http.post<LoginResponse>(apiURL, { username, password }).subscribe({
       next: (response) => {
@@ -56,6 +85,7 @@ export class AuthService {
       }
     });
   }
+
   logout() {
     this.loggedOut = false;
     localStorage.removeItem('token');
@@ -73,3 +103,5 @@ export class AuthService {
   // }
 
 }
+
+//autoLogout logic for safe

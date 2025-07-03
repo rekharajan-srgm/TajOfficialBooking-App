@@ -33,7 +33,7 @@ export class AdminPageComponent {
   }
 
   getCustomerDetails() {
-    // this.authService.hideButtons=true;
+    // this.authService.setHideButtons(true);
     if (typeof window !== 'undefined' && localStorage) {
       const token = localStorage.getItem('token');
       const headers = new HttpHeaders({
@@ -168,9 +168,7 @@ export class AdminPageComponent {
       const dateObj = new Date(data.date);
       return dateObj.getTime();
     });
-    console.log("dates in milliseconds-", dateOrder);
     dateOrder.sort((a:any,b:any)=>a-b);
-    console.log("dates in order-", dateOrder);
     dateOrder=dateOrder.map((date:any)=>{
       const dates=new Date(date);
       const localDate=dates.toLocaleDateString("en-IN");
