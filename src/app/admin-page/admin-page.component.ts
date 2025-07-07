@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../services/authentication/auth.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-page',
   standalone: true,
@@ -16,8 +17,8 @@ export class AdminPageComponent {
   customersPerPage: any = [];
   currentPage = 1;
   pageSize = 5;
-
-  constructor(private http: HttpClient, private authService: AuthService) {
+  searchText: string = "";
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {
 
   }
 
@@ -41,7 +42,7 @@ export class AdminPageComponent {
       });
       const apiURL = "http://localhost:3000/api/bookings";
       this.http.get(apiURL, { headers }).subscribe({
-        next: (res:any) => {
+        next: (res: any) => {
           this.customers = [];
           this.cust = [];
           for (let i = 0; i < res.length; i++) {
@@ -168,22 +169,22 @@ export class AdminPageComponent {
       const dateObj = new Date(data.date);
       return dateObj.getTime();
     });
-    dateOrder.sort((a:any,b:any)=>a-b);
-    dateOrder=dateOrder.map((date:any)=>{
-      const dates=new Date(date);
-      const localDate=dates.toLocaleDateString("en-IN");
+    dateOrder.sort((a: any, b: any) => a - b);
+    dateOrder = dateOrder.map((date: any) => {
+      const dates = new Date(date);
+      const localDate = dates.toLocaleDateString("en-IN");
       return localDate;
     })
-    const results=dateOrder.map((date:any)=>{
+    const results = dateOrder.map((date: any) => {
 
-      return this.customers.find((data:any)=>data.date === date);
+      return this.customers.find((data: any) => data.date === date);
     });
     // this.customers.sort((a:any,b:any)=>new Date(a.date).getTime() - new Date(b.date).getTime());
-    this.customers=results;
-    console.log("customers",this.customers);
-    this.currentPage=1;
+    this.customers = results;
+    console.log("customers", this.customers);
+    this.currentPage = 1;
     this.updatePage();
-   
+
   }
 
   OrderByCount() {
@@ -201,4 +202,31 @@ export class AdminPageComponent {
     this.updatePage();
   }
 
+  onSearchChange() {
+    console.log("Search text is:", this.searchText);
+    const inputEmail = this.searchText.trim();
+    if(inputEmail){
+    const foundEmail = this.cust.filter((val: any) => {
+      return val.email === inputEmail;
+    });
+    console.log("the emailllllllllllll", foundEmail);
+    // if (foundEmail) {
+      this.customers = foundEmail;
+      
+    }
+    else{
+      this.customers=[...this.cust];
+    }
+    this.currentPage = 1;
+    this.updatePage();
+  }
+  
+reloadPage() {
+  const currentUrl = this.router.url;
+  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    this.router.navigate([currentUrl]);
+  });
 }
+
+}
+

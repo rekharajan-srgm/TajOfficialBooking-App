@@ -17,7 +17,7 @@
                 </select>
             </div>
             <div>
-                <input type="text" placeholder="Do filters here by e-mail id" class="p-1 w-72 searchFilter">
+                <input type="text" placeholder="Do filters here by e-mail id" class="p-1 w-72 searchFilter" [(ngModel)]="searchText" (input)="onSearchChange()">
             </div>
 
         </div>

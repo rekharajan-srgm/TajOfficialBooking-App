@@ -19,7 +19,9 @@ export class AppComponent {
 
   ngOnInit() {
     this.hideButtons$ = this.authService.hideButtons$;
-    console.log("hideButton Valueeeeeeeee:",this.hideButtons$);
+    // this.hideButtons$.subscribe((value)=>{
+    // console.log("Hide button actual value emitted:",value);
+    // });
   }
 
   logout() {

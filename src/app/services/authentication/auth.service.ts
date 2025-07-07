@@ -33,11 +33,12 @@ export class AuthService {
       } else {
         // token is still valid
         const expiryTime = this.tokenExpiryService.getTokenExpiration(token)! - Date.now();
-        // if(this.loggedOut==true){
-        //    this.setHideButtons(true);
-        // }
+        const isLoggedIn=sessionStorage.getItem('loggedIn');
+        if(isLoggedIn=='true'){
+           this.setHideButtons(true);
+        }
         console.log("ExpiryTime for current valid token:::",expiryTime);
-        console.log("loggedOut is:",this.loggedOut);
+        console.log("loggedOut is:",sessionStorage.getItem('loggedIn'));
         setTimeout(() => {
           localStorage.removeItem('token');
           localStorage.removeItem('user');
@@ -52,7 +53,7 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    
+    sessionStorage.setItem('loggedIn','true');
     this.loggedOut = true;
     const apiURL = "http://localhost:3000/api/auth/login";
     this.http.post<LoginResponse>(apiURL, { username, password }).subscribe({
@@ -87,6 +88,7 @@ export class AuthService {
   }
 
   logout() {
+    sessionStorage.setItem('loggedIn','false');
     this.loggedOut = false;
     localStorage.removeItem('token');
     localStorage.removeItem('user');
