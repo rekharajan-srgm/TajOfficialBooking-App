@@ -47,9 +47,12 @@ export class BookTableComponent {
       email: this.bookingData.email
     });
     if (this.emailForm.valid) {
-      this.http.post('http://localhost:3000/send-email', this.emailForm.value).subscribe({
+      this.http.post('http://localhost:4000/send-email', this.emailForm.value).subscribe({
         next: (res) => alert('Email sent successfully'),
-        error: (err) => alert('Failed to send email')
+        error: (err) => {
+alert('Failed to send email');
+console.log("errrrrrrorrrrrr msg",err);
+        } 
       });
     }
   }

@@ -1,12 +1,44 @@
-<div class="text-center mt-60">
+<div class="text-center mt-40">
     <p class="text-5xl font-bold">Welcome to <span class="text-yellow-400">Sizzle</span></p>
     <p class="mt-2 text-lg">"Indulge in Culinary Delights: Where Every Bite is a Passport to Flavors of Amore!"</p>
-    <div class="mt-6 flex flex-col justify-center items-center">
-        <h2 class="text-xl mb-4">Admin Login</h2>
-        <input type="text" [(ngModel)]="username" placeholder="Username" class="border border-gray-300 p-2 mb-2 w-64 focus:outline-none focus:shadow-lg text-black">
+
+    <!-- admin Login -->
+    <div *ngIf="!otpLogin" class="mt-6 flex flex-col justify-center items-center">
+        <h2 class="text-xl sm:text-lg mb-4 font-bold">Admin Login</h2>
+        <input type="text" [(ngModel)]="username" placeholder="Username"
+            class="border border-gray-300 p-2 mb-2 w-64 focus:outline-none focus:shadow-lg text-black">
         <input type="password" [(ngModel)]="password" placeholder="Password"
             class="border border-gray-300 p-2 mb-4 w-64 focus:outline-none focus:shadow-lg text-black">
-        <button (click)="login(this.username,this.password)" class="bg-blue-500 text-white px-4 py-2 rounded">Login</button>
+        <button (click)="login(this.username,this.password)"
+            class="bg-blue-500 text-white px-4 py-2 rounded">Login</button>
         <div *ngIf="loginError" class="text-red-500 mt-2">Invalid username or password</div>
+        <div class="mt-4">
+            <button (click)="otpLogin=true" class="bg-gray-500 text-white px-4 py-2 rounded">User
+                Login</button>
+        </div>
     </div>
+
+    <!--User Login-->
+    <div *ngIf="otpLogin" class="mt-6 flex flex-col justify-center items-center">
+        <h2 class="text-xl sm:text-lg mb-4 font-bold">User Login</h2>
+
+
+       <div class="relative mb-2">
+        <input type="text" [(ngModel)]="emailId" placeholder="Enter EmailId"
+            class="border border-gray-300 py-2 px-3 w-64 focus:outline-none focus:shadow-lg text-black">
+        <button (click)="sendOtp()" class="absolute top-0 right-[-81px]  bottom-0 bg-gray-500 hover:bg-gray-600 text-white text-sm px-4 py-1 rounded-l-none rounded-r">Get Otp</button>
+       </div>
+
+
+
+        <input type="number" [(ngModel)]="otp" placeholder="Enter OTP"
+            class="border border-gray-300 p-2 mb-4 w-64 focus:outline-none focus:shadow-lg text-black">
+        <button (click)="login(this.emailId,this.otp)" class="bg-blue-500 text-white px-4 py-2 rounded">Login</button>
+        <div *ngIf="loginError" class="text-red-500 mt-2">Invalid emailId or Otp</div>
+        <div class="mt-4">
+            <button (click)="otpLogin=false" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Admin
+                Login</button>
+        </div>
+    </div>
+
 </div>

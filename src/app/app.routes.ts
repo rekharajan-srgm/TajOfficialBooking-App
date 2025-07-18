@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 import { BookTableComponent } from './book-table/book-table.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { UserPageComponent } from './user-page/user-page.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -17,5 +18,6 @@ export const routes: Routes = [
     {path:'contact',component:ContactComponent},
     {path:'bookTable',component:BookTableComponent},
     {path:'adminPage',component:AdminPageComponent},
-    {path:'adminLogin',component:AdminLoginComponent}
+    {path:'adminLogin',component:AdminLoginComponent},
+    {path:'userPage',component:UserPageComponent}
 ];
